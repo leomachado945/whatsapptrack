@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>WhatSpy - Veja conversas de qualquer número</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(to bottom,#0f172a,#111827,#1e293b);
+      color:#fff;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:430px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0 30px;
+    }
+
+    .logo img{
+      width:52px;
+      height:52px;
+      border-radius:14px;
+    }
+
+    .logo h1{
+      font-size:34px;
+      font-weight:800;
+    }
+
+    .logo span{
+      color:#22c55e;
+    }
+
+    .card{
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    h2{
+      font-size:28px;
+      font-weight:800;
+      text-align:center;
+      line-height:1.2;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#9ca3af;
+      margin-top:12px;
+      font-size:14px;
+    }
+
+    label{
+      display:block;
+      margin-top:24px;
+      margin-bottom:10px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .phone{
+      display:flex;
+      gap:10px;
+    }
+
+    .ddd{
+      background:#1f2937;
+      border:1px solid #374151;
+      border-radius:12px;
+      padding:12px 14px;
+      font-size:14px;
+      white-space:nowrap;
+    }
+
+    input{
+      width:100%;
+      background:#1f2937;
+      border:1px solid #374151;
+      border-radius:12px;
+      padding:12px;
+      color:#fff;
+      font-size:15px;
+      outline:none;
+    }
+
+    button{
+      width:100%;
+      border:none;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .btn{
+      margin-top:18px;
+      background:#22c55e;
+      color:#fff;
+      border-radius:14px;
+      padding:15px;
+      font-weight:700;
+      font-size:16px;
+    }
+
+    .btn:hover{
+      opacity:.9;
+    }
+
+    .security{
+      margin-top:14px;
+      text-align:center;
+      font-size:12px;
+      color:#9ca3af;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .feature{
+      background:#111827;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:16px 10px;
+      text-align:center;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .feature .icon{
+      font-size:22px;
+      margin-bottom:8px;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .success{
+      text-align:center;
+    }
+
+    .successIcon{
+      width:80px;
+      height:80px;
+      background:#22c55e20;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 20px;
+      font-size:40px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .stat{
+      background:#1f2937;
+      border-radius:18px;
+      padding:18px;
+      text-align:center;
+    }
+
+    .stat h3{
+      font-size:30px;
+      margin-top:8px;
+    }
+
+    .filesBox{
+      margin-top:18px;
+      background:#1f2937;
+      border-radius:18px;
+      padding:20px;
+      text-align:center;
+    }
+
+    .filesBox .icon{
+      font-size:34px;
+      margin-bottom:8px;
+    }
+
+    .filesBox p{
+      font-size:13px;
+      color:#9ca3af;
+    }
+
+    .filesBox h3{
+      font-size:42px;
+      margin-top:8px;
+      color:#22c55e;
+      font-weight:800;
+    }
+
+    .offer{
+      margin-top:20px;
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      border-radius:24px;
+      padding:24px;
+      color:#fff;
+      box-shadow:0 10px 30px rgba(34,197,94,.25);
+    }
+
+    .offer h3{
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    .price{
+      margin-top:18px;
+      background:rgba(255,255,255,.15);
+      border-radius:18px;
+      padding:18px;
+      text-align:center;
+    }
+
+    .price strong{
+      font-size:52px;
+      line-height:1;
+    }
+
+    .checkout{
+      margin-top:18px;
+      background:#fff;
+      color:#111827;
+      border-radius:14px;
+      padding:16px;
+      font-weight:800;
+      font-size:16px;
+    }
+
+    .footer{
+      margin-top:30px;
+      text-align:center;
+      color:#9ca3af;
+      font-size:11px;
+      line-height:1.5;
+    }
+
+    .loading{
+      margin-top:20px;
+      text-align:center;
+    }
+
+    .bar{
+      width:100%;
+      height:12px;
+      background:#1f2937;
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:18px;
+    }
+
+    .progress{
+      height:100%;
+      width:0%;
+      background:#22c55e;
+      transition:.3s;
+    }
+
+    .loadingText{
+      margin-top:12px;
+      color:#9ca3af;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <img src="images/whatspy-logo-utu0Ny-4.png">
+    <h1>What<span>Spy</span></h1>
+  </div>
+
+  <!-- PAGE 1 -->
+  <div id="page1">
+
+    <div class="card">
+      <h2>Veja as conversas de qualquer número</h2>
+
+      <p class="subtitle">
+        Digite o número do WhatsApp que deseja monitorar.
+        100% anônimo e sigiloso.
+      </p>
+
+      <label>Número de telefone</label>
+
+      <div class="phone">
+        <div class="ddd">🇧🇷 +55</div>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="(11) 99999-9999"
+        >
+      </div>
+
+      <button class="btn" onclick="startSearch()">
+        🔍 Buscar conversas
+      </button>
+
+      <div class="security">
+        🔒 Conexão criptografada · Anônimo
+      </div>
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="icon">👥</div>
+        +2M usuários
+      </div>
+
+      <div class="feature">
+        <div class="icon">🛡️</div>
+        100% Seguro
+      </div>
+
+      <div class="feature">
+        <div class="icon">⚡</div>
+        Resultado rápido
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- LOADING -->
+  <div id="loading" class="hidden">
+
+    <div class="card loading">
+
+      <h2>Buscando conversas...</h2>
+
+      <div class="bar">
+        <div class="progress" id="progress"></div>
+      </div>
+
+      <div class="loadingText" id="loadingText">
+        Conectando aos servidores...
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PAGE 2 -->
+  <div id="page2" class="hidden">
+
+    <div class="card success">
+
+      <div class="successIcon">
+        👥
+      </div>
+
+      <h2>Conversas encontradas!</h2>
+
+      <p class="subtitle">
+        Mas há <strong>muitas pessoas na fila</strong>
+        aguardando para acessar.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          👥
+          <h3>8.247</h3>
+          <small>na sua frente</small>
+        </div>
+
+        <div class="stat">
+          ⏰
+          <h3>64h</h3>
+          <small>tempo de espera</small>
+        </div>
+
+      </div>
+
+      <!-- NOVO BLOCO -->
+      <div class="filesBox">
+
+        <div class="icon">📂</div>
+
+        <p>
+          Arquivos disponíveis para download
+        </p>
+
+        <h3 id="filesSize">
+          0 GB
+        </h3>
+
+      </div>
+
+    </div>
+
+    <div class="offer">
+
+      <h3>⚡ Pular a fila agora</h3>
+
+      <p>
+        Pague apenas uma
+        <strong>taxa de comprometimento de R$ 2,50</strong>
+        e receba o resultado imediatamente.
+      </p>
+
+      <div class="price">
+        R$
+        <strong>2,50</strong>
+      </div>
+
+      <button
+        class="checkout"
+        onclick="window.location.href='https://SEU-CHECKOUT.com'"
+      >
+        Pagar R$ 2,50 e ver agora
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    WhatSpy é uma plataforma de demonstração.
+    Use de forma ética e respeitando a privacidade alheia.
+  </div>
+
+</div>
+
+<script>
+
+  function startSearch(){
+
+    const phone = document.getElementById('phone').value;
+
+    if(phone.length < 10){
+      alert('Digite um número válido');
+      return;
+    }
+
+    document.getElementById('page1').classList.add('hidden');
+    document.getElementById('loading').classList.remove('hidden');
+
+    const progress = document.getElementById('progress');
+    const loadingText = document.getElementById('loadingText');
+
+    let width = 0;
+
+    const texts = [
+      'Conectando aos servidores...',
+      'Localizando conversas...',
+      'Buscando mensagens...',
+      'Analisando dados...',
+      'Conversas encontradas!'
+    ];
+
+    let textIndex = 0;
+
+    const interval = setInterval(() => {
+
+      width += 5;
+
+      progress.style.width = width + '%';
+
+      if(width % 20 === 0 && textIndex < texts.length){
+        loadingText.innerText = texts[textIndex];
+        textIndex++;
+      }
+
+      if(width >= 100){
+
+        clearInterval(interval);
+
+        setTimeout(() => {
+
+          // GERA GB ALEATÓRIO
+          const randomGB = (Math.random() * (57 - 35) + 35).toFixed(1);
+
+          // MOSTRA NO HTML
+          document.getElementById('filesSize').innerText = randomGB + ' GB';
+
+          document.getElementById('loading').classList.add('hidden');
+          document.getElementById('page2').classList.remove('hidden');
+
+        }, 700);
+
+      }
+
+    }, 180);
+
+  }
+
+</script>
+
+</body>
+</html>
